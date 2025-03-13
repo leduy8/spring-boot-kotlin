@@ -3,6 +3,7 @@ package org.example.helloworld23.core.configuration
 import org.example.helloworld23.core.utils.JwtAuthFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.http.SessionCreationPolicy
@@ -25,7 +26,7 @@ class SecurityConfig(private val jwtAuthFilter: JwtAuthFilter) {
         return http
             .csrf { it.disable() }
             .authorizeHttpRequests {
-                // it.requestMatchers(HttpMethod.GET, "/api/users").permitAll() // Example permit specific API
+                it.requestMatchers(HttpMethod.POST, "/api/users").permitAll()
                 it.requestMatchers("/api/auth/login").permitAll()
                 it.anyRequest().authenticated()
             }

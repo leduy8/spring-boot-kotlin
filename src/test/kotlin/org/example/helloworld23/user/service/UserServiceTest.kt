@@ -13,10 +13,12 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.security.crypto.password.PasswordEncoder
+import org.springframework.test.context.ActiveProfiles
 import kotlin.test.assertEquals
 
 @SpringBootTest
 @ExtendWith(MockKExtension::class)
+@ActiveProfiles("test")
 class UserServiceTest {
 
     @MockK
